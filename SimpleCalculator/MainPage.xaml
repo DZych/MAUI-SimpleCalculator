@@ -2,41 +2,174 @@
 <ContentPage
     x:Class="SimpleCalculator.MainPage"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
-    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml">
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    Shell.NavBarIsVisible="False">
 
-    <!--<ScrollView>
-        <VerticalStackLayout
-            Padding="30,0"
-            Spacing="25"
-            VerticalOptions="Center">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Style x:Key="NormalButon" TargetType="Button">
+                <Setter Property="FontSize" Value="32" />
+                <Setter Property="Margin" Value="8" />
+                <Setter Property="TextColor" Value="Black" />
+                <Setter Property="BackgroundColor" Value="White" />
+                <Setter Property="CornerRadius" Value="0" />
+            </Style>
 
-            <Image
-                HeightRequest="200"
-                HorizontalOptions="Center"
-                SemanticProperties.Description="Cute dot net bot waving hi to you!"
-                Source="dotnet_bot.png" />
+            <Style x:Key="RightColumnButon" TargetType="Button">
+                <Setter Property="FontSize" Value="32" />
+                <Setter Property="Margin" Value="8" />
+                <Setter Property="TextColor" Value="Black" />
+                <Setter Property="BackgroundColor" Value="LightGray" />
+                <Setter Property="CornerRadius" Value="50" />
+            </Style>
 
-            <Label
-                FontSize="32"
-                HorizontalOptions="Center"
-                SemanticProperties.HeadingLevel="Level1"
-                Text="Hello, World!" />
+            <Style x:Key="ResultButon" TargetType="Button">
+                <Setter Property="FontSize" Value="32" />
+                <Setter Property="Margin" Value="8" />
+                <Setter Property="TextColor" Value="White" />
+                <Setter Property="BackgroundColor" Value="DodgerBlue" />
+                <Setter Property="CornerRadius" Value="50" />
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
 
-            <Label
-                FontSize="18"
-                HorizontalOptions="Center"
-                SemanticProperties.Description="Welcome to dot net Multi platform App U I"
-                SemanticProperties.HeadingLevel="Level2"
-                Text="Welcome to .NET Multi-platform App UI" />
+    <Grid
+        x:Name="Container"
+        Margin="15"
+        ColumnDefinitions="*,*,*,*"
+        RowDefinitions="*,*,*,*,*,*,*">
 
-            <Button
-                x:Name="CounterBtn"
-                Clicked="OnCounterClicked"
-                HorizontalOptions="Center"
-                SemanticProperties.Hint="Counts the number of times you click"
-                Text="Click me" />
+        <Label
+            x:Name="LastCalculation"
+            Grid.Row="0"
+            Grid.ColumnSpan="4"
+            FontSize="22"
+            HorizontalTextAlignment="End"
+            LineBreakMode="NoWrap"
+            Text="None"
+            VerticalTextAlignment="End" />
 
-        </VerticalStackLayout>
-    </ScrollView>-->
+        <Label
+            x:Name="Result"
+            Grid.Row="1"
+            Grid.ColumnSpan="4"
+            FontAttributes="Bold"
+            FontSize="64"
+            HorizontalTextAlignment="End"
+            LineBreakMode="NoWrap"
+            Text="0"
+            VerticalTextAlignment="End" />
+
+
+        <!--  First Row of Buttons  -->
+        <Button
+            Grid.Row="2"
+            Grid.Column="0"
+            Style="{StaticResource NormalButon}"
+            Text="C" />
+        <Button
+            Grid.Row="2"
+            Grid.Column="1"
+            Style="{StaticResource NormalButon}"
+            Text="%" />
+        <Button
+            Grid.Row="2"
+            Grid.Column="2"
+            Style="{StaticResource NormalButon}"
+            Text="⌫" />
+        <Button
+            Grid.Row="2"
+            Grid.Column="3"
+            Style="{StaticResource RightColumnButon}"
+            Text="÷" />
+
+        <!--  First Row of Buttons  -->
+        <Button
+            Grid.Row="3"
+            Grid.Column="0"
+            Style="{StaticResource NormalButon}"
+            Text="7" />
+        <Button
+            Grid.Row="3"
+            Grid.Column="1"
+            Style="{StaticResource NormalButon}"
+            Text="8" />
+        <Button
+            Grid.Row="3"
+            Grid.Column="2"
+            Style="{StaticResource NormalButon}"
+            Text="9" />
+        <Button
+            Grid.Row="3"
+            Grid.Column="3"
+            Style="{StaticResource RightColumnButon}"
+            Text="x" />
+
+        <!--  Third Row of Buttons  -->
+        <Button
+            Grid.Row="4"
+            Grid.Column="0"
+            Style="{StaticResource NormalButon}"
+            Text="4" />
+        <Button
+            Grid.Row="4"
+            Grid.Column="1"
+            Style="{StaticResource NormalButon}"
+            Text="5" />
+        <Button
+            Grid.Row="4"
+            Grid.Column="2"
+            Style="{StaticResource NormalButon}"
+            Text="6" />
+        <Button
+            Grid.Row="4"
+            Grid.Column="3"
+            Style="{StaticResource RightColumnButon}"
+            Text="-" />
+
+        <!--  Fourth Row of Buttons  -->
+        <Button
+            Grid.Row="5"
+            Grid.Column="0"
+            Style="{StaticResource NormalButon}"
+            Text="3" />
+        <Button
+            Grid.Row="5"
+            Grid.Column="1"
+            Style="{StaticResource NormalButon}"
+            Text="2" />
+        <Button
+            Grid.Row="5"
+            Grid.Column="2"
+            Style="{StaticResource NormalButon}"
+            Text="1" />
+        <Button
+            Grid.Row="5"
+            Grid.Column="3"
+            Style="{StaticResource RightColumnButon}"
+            Text="+" />
+
+        <!--  Fourth Row of Buttons  -->
+        <Button
+            Grid.Row="6"
+            Grid.Column="0"
+            Style="{StaticResource NormalButon}"
+            Text="00" />
+        <Button
+            Grid.Row="6"
+            Grid.Column="1"
+            Style="{StaticResource NormalButon}"
+            Text="0" />
+        <Button
+            Grid.Row="6"
+            Grid.Column="2"
+            Style="{StaticResource NormalButon}"
+            Text="." />
+        <Button
+            Grid.Row="6"
+            Grid.Column="3"
+            Style="{StaticResource ResultButon}"
+            Text="=" />
+    </Grid>
 
 </ContentPage>
